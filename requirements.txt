@@ -1,1 +1,3 @@
 fastapi[all]
+sqlmodel
+scalar_fastapi
