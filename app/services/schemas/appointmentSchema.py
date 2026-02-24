@@ -3,8 +3,8 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field
 
 from app.database.models.apointment import AppointmentStatus
-from app.database.models.doctor import DoctorModel
-from app.database.models.patient import PatientModel
+from app.services.schemas.doctorSchema import DoctorRead
+from app.services.schemas.patientSchema import PatientRead
 
 
 class AppointmentCreate(BaseModel):
@@ -18,8 +18,8 @@ class AppointmentCreate(BaseModel):
 class AppointmentRead(BaseModel):
     date: datetime
     status: AppointmentStatus
-    doctor : DoctorModel
-    patient : PatientModel
+    doctor : DoctorRead
+    patient : PatientRead
     
     model_config = ConfigDict(from_attributes=True)
     
