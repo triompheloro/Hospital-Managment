@@ -1,6 +1,11 @@
-from sqlalchemy.ext.asyncio import create_async_engine
+from typing import Annotated
+
+from fastapi import Depends
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlmodel import SQLModel
 from ..setting.config import db_settings
+
+from sqlalchemy.orm import sessionmaker
 
 engine = create_async_engine(
     url= db_settings.POSTGRESQL_URL,
@@ -16,3 +21,18 @@ async def create_db_tables():
         from .models.specialization import SpecializationModel
         
         await connection.run_sync(SQLModel.metadata.create_all)
+        
+        
+
+async def create_session():
+    async_session = sessionmaker(
+        bind=engine,
+        class_=AsyncSession,
+        expire_on_commit=False
+    )
+    async with async_session() as session:
+        yield session
+        
+
+        
+

@@ -22,7 +22,7 @@ class AppointmentModel(SQLModel, table = True):
     
     doctor_id: int = Field(foreign_key="doctors.id")
     doctor: "DoctorModel" = Relationship(
-        back_populates="appoitments",
+        back_populates="appointments",
         sa_relationship_kwargs={
             "lazy":"selectin"
         }

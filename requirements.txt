@@ -3,3 +3,5 @@ sqlmodel
 scalar_fastapi
 asyncpg
 alembic
+passlib[bcrypt]
+bcrypt==4.0.1

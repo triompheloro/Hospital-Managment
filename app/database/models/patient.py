@@ -19,7 +19,7 @@ class PatientModel(SQLModel, table=True):
     hashed_password: str
     
     appointments: list["AppointmentModel"] = Relationship(
-        back_populates="appointments",
+        back_populates="patient",
         sa_relationship_kwargs={"lazy":"selectin"}
     )
     
