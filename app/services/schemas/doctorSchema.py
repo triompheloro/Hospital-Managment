@@ -1,5 +1,7 @@
 from pydantic import BaseModel, EmailStr, ConfigDict
 
+from app.database.models.specialization import SpecializationModel
+
 class DoctorCreate(BaseModel):
     name: str
     email: EmailStr
@@ -11,6 +13,6 @@ class DoctorCreate(BaseModel):
 class DoctorRead(BaseModel):
     name: str
     email: EmailStr
-    specialization_id: int 
+    specialization: SpecializationModel 
     
     model_config = ConfigDict(from_attributes=True)

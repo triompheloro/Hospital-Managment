@@ -7,6 +7,9 @@ from app.database.session import create_db_tables
 
 from app.router.patient import patientRouter
 from app.router.specialization import specialization_router
+from app.router.doctor import doctorRouter
+from app.router.appointment import appointmentRouter
+from app.router.consultation import consultationRouter
 
 @asynccontextmanager
 async def lifespan_handler(app: FastAPI):
@@ -26,3 +29,6 @@ def api_documentation_and_testing():
     
 app.include_router(patientRouter)
 app.include_router(specialization_router)
+app.include_router(doctorRouter)
+app.include_router(appointmentRouter)
+app.include_router(consultationRouter)
